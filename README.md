@@ -1,6 +1,5 @@
-# Welcome to GitHub Desktop!
+# Automations
+   This repository is created to make tedious process a lot easier using automations with different programming languages available.
 
 
-## Local Development
-1. Open index.html in your browser.
-2. Just Practicing
+
