@@ -2,8 +2,9 @@
 
 target=$1
 
-#Finding subdomains using sublist3r, subfinder and assetfinder
 
+# Finding subdomains using sublist3r, subfinder and assetfinder
+# Need to install sublist3r, subfinder and assetfinder first. You can install it by apt install <tool name> inside kali linux.
 if ! [ $target ]; then
         echo "[!] No target provided like example.com "
         exit 1
@@ -15,5 +16,5 @@ assetfinder --subs-only $target >>domain
 #cat domain domain1  |sort |uniq >domains
 sort -u domain domain1 >domains
 rm domain domain1
-echo "[!]Found subdomains were saved in domains."
+echo "[+] Found subdomains were saved in domains."
 exit 0
