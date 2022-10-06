@@ -8,12 +8,14 @@
 from urllib.parse import urlparse, unquote
 import sys
 
-
 fetched_paths = []
 fetched_queries = []
 params = []
-
 file = sys.argv[1]
+
+valid_symbols = ["!","@","#","%","^","&","*","(",")","-","+","=","{","}","[","]","/",":",";","."]
+
+
 def file_input(file):
     with open(file) as f:
         for line in f:
@@ -34,21 +36,18 @@ def grab_params(x):
 
 def uniq_param(data):
     list_set = set(data)
-    uniq_value = (list(filter(None,list_set)))
+    uniq_value = (list(filter(None, list_set)))
     for value in uniq_value:
-        if len(value) < 10:
-            if not value.isnumeric():
-                if value != "":
-                    if (value != urlparse(value)):
-                        x=value.strip("\\,.,/,?,' ',=,-")
-                        print(x.strip())
+        if len(value) < 15:
+            if not value.isnumeric() and value.isalpha():
+                if (value != "") and (value != urlparse(value)):
+                    if not value.startswith(tuple(valid_symbols)):
+                        x = value.strip("\n")
+                        x.strip()
+                        print(x)
 
 
-# grab_params(fetched_queries)
-# uniq_param(params)
-
-
-if __name__== "__main__":
+if __name__ == "__main__":
     if sys.argv[1]:
         file_input(sys.argv[1])
         grab_params(fetched_queries)
